@@ -186,7 +186,7 @@ try:
 ```
 O horário programado é utilizado no ```while``` para definir até quando os dados serão cadastrados.
 
-## A receção e o cadastro
+## A recepção de dados do USB e o cadastro no MySQL
 ```
 try:
     while (time.localtime().tm_hour <= hora) and (time.localtime().tm_min != minuto):
