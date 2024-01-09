@@ -13,6 +13,7 @@ Para fazer o circuito, é necessário ter:
 |Jumpers|±8|
 
 A montagem é a seguinte (assim como no [projeto da Lógica Fuzzy](https://github.com/GiovanyRezende/fuzzy_arduino/), o sensor DHT11 está sendo representado pelo LM35):
+
 ![image](https://github.com/GiovanyRezende/arduino_sql/assets/111097597/ebb5dcde-0a5a-42a0-9ceb-244ac50da558)
 
 # Modelo Conceitual e Lógico do Banco
@@ -236,6 +237,14 @@ else:
     ser.close()
     print("Procedimento concluído!")
 ```
+A interessante notar quatro fatos:
+- A temperatura é em Celsius;
+- O dado de umidade é convertido para porcentagem, ou seja, fica um valor entre 0 e 1;
+- O dado de luminosidade também é convertido para porcentagem. No Arduino, esse valor fica entre 0 e 1023, então esse dado é tratado o dividindo por 1023;
+- Como pela lógica Fuzzy é possível ter mais de uma classificação (que só muda a intensidade), há condições if para ```Frio```, ```Confortável``` e ```Quente```, o que possibilita uma informação climática ter duas classificações, o que pode ser visto quando se visualiza vw_dados.
+
+Para ver os dados já tratados, se realiza a consulta:
+```SELECT * FROM vw_dados;```
 
 <div align= center>
 
